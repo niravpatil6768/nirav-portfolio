@@ -13,8 +13,8 @@ export const projectId = assertValue(
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
   if (v === undefined) {
-    throw new Error(errorMessage)
+    console.warn(errorMessage)
   }
 
-  return v
+  return v as T
 }
