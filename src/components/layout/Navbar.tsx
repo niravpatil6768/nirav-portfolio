@@ -67,30 +67,32 @@ export default function Navbar({ data }: { data?: any }) {
           ))}
 
           <div className="flex items-center gap-4 ml-4 pl-8 border-l border-outline-variant/30">
-            {data?.linkedin && (
+            {data?.linkedin && data?.visibleNavIcons?.linkedin !== false && (
               <a href={data.linkedin} target="_blank" aria-label="LinkedIn" className="text-outline hover:text-[#0a66c2] transition-all hover:scale-125 active:scale-95 duration-200">
                 <LinkedinIcon />
               </a>
             )}
-            {data?.github && (
+            {data?.github && data?.visibleNavIcons?.github !== false && (
               <a href={data.github} target="_blank" aria-label="GitHub" className="text-outline hover:text-white transition-all hover:scale-125 active:scale-95 duration-200">
                 <GithubIcon />
               </a>
             )}
-            {data?.email && (
+            {data?.email && data?.visibleNavIcons?.email !== false && (
               <a href={`mailto:${data.email}`} aria-label="Email" className="text-outline hover:text-primary transition-all hover:scale-125 active:scale-95 duration-200">
                 <Mail size={18} />
               </a>
             )}
-            <a href={data?.twitter || "https://x.com"} target="_blank" aria-label="Twitter" className="text-outline hover:text-[#1DA1F2] transition-all hover:scale-125 active:scale-95 duration-200">
-              <TwitterIcon />
-            </a>
-            {data?.discord && (
+            {data?.twitter && data?.visibleNavIcons?.twitter !== false && (
+              <a href={data.twitter} target="_blank" aria-label="Twitter" className="text-outline hover:text-[#1DA1F2] transition-all hover:scale-125 active:scale-95 duration-200">
+                <TwitterIcon />
+              </a>
+            )}
+            {data?.discord && data?.visibleNavIcons?.discord !== false && (
               <a href={data.discord.startsWith('http') ? data.discord : '#'} target="_blank" aria-label="Discord" className="text-outline hover:text-[#5865F2] transition-all hover:scale-125 active:scale-95 duration-200">
                 <DiscordIcon />
               </a>
             )}
-            {data?.leetcode && (
+            {data?.leetcode && data?.visibleNavIcons?.leetcode !== false && (
               <a href={data.leetcode} target="_blank" aria-label="LeetCode" className="text-outline hover:text-[#FFA116] transition-all hover:scale-125 active:scale-95 duration-200">
                 <LeetcodeIcon />
               </a>
@@ -130,32 +132,34 @@ export default function Navbar({ data }: { data?: any }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center gap-6 mt-8"
+            className="flex items-center gap-6 mt-8 flex-wrap justify-center px-4"
           >
-            {data?.linkedin && (
+            {data?.linkedin && data?.visibleNavIcons?.linkedin !== false && (
               <a href={data.linkedin} target="_blank" className="p-4 bg-surface rounded-full text-[#0a66c2] hover:text-white hover:bg-[#0a66c2] transition-all hover:scale-110 active:scale-95">
                 <LinkedinIcon />
               </a>
             )}
-            {data?.github && (
+            {data?.github && data?.visibleNavIcons?.github !== false && (
               <a href={data.github} target="_blank" className="p-4 bg-surface rounded-full text-white hover:bg-primary transition-all hover:scale-110 active:scale-95">
                 <GithubIcon />
               </a>
             )}
-            {data?.email && (
+            {data?.email && data?.visibleNavIcons?.email !== false && (
               <a href={`mailto:${data.email}`} className="p-4 bg-surface rounded-full text-primary hover:text-white hover:bg-primary transition-all hover:scale-110 active:scale-95">
                 <Mail size={20} />
               </a>
             )}
-            <a href={data?.twitter || "https://x.com"} target="_blank" className="p-4 bg-surface rounded-full text-[#1DA1F2] hover:text-white hover:bg-[#1DA1F2] transition-all hover:scale-110 active:scale-95">
-              <TwitterIcon />
-            </a>
-            {data?.discord && (
+            {data?.twitter && data?.visibleNavIcons?.twitter !== false && (
+              <a href={data.twitter} target="_blank" className="p-4 bg-surface rounded-full text-[#1DA1F2] hover:text-white hover:bg-[#1DA1F2] transition-all hover:scale-110 active:scale-95">
+                <TwitterIcon />
+              </a>
+            )}
+            {data?.discord && data?.visibleNavIcons?.discord !== false && (
               <a href={data.discord.startsWith('http') ? data.discord : '#'} target="_blank" className="p-4 bg-surface rounded-full text-[#5865F2] hover:text-white hover:bg-[#5865F2] transition-all hover:scale-110 active:scale-95">
                 <DiscordIcon />
               </a>
             )}
-            {data?.leetcode && (
+            {data?.leetcode && data?.visibleNavIcons?.leetcode !== false && (
               <a href={data.leetcode} target="_blank" className="p-4 bg-surface rounded-full text-[#FFA116] hover:text-white hover:bg-[#FFA116] transition-all hover:scale-110 active:scale-95">
                 <LeetcodeIcon />
               </a>

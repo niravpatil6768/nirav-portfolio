@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ChevronDown, Download } from 'lucide-react';
+import RobotMascot from '@/three/RobotMascot';
+
 export default function Hero({ data }: { data: any }) {
   return (
     <section id="hero" className="relative w-full h-screen flex items-center overflow-hidden bg-transparent">
@@ -26,8 +28,8 @@ export default function Hero({ data }: { data: any }) {
             variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } } }}
             className="font-display text-6xl md:text-8xl lg:text-[10rem] font-bold leading-[0.85] tracking-tighter text-foreground uppercase"
           >
-            {data?.name?.split(" ")[0] || "NIRAV"} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container">{data?.role?.split(" ")[1] || "ENGINEER"}</span>
+            <span className="block text-white">{data?.heroTitlePrimary || data?.name?.split(" ")[0] || "NIRAV"}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container">{data?.heroTitleSecondary || data?.role?.split(" ")[1] || "ENGINEER"}</span>
           </motion.h1>
           
           <motion.p 
@@ -57,26 +59,17 @@ export default function Hero({ data }: { data: any }) {
           </motion.div>
         </motion.div>
         
-        {/* Cartoon Mascot */}
+        {/* Interactive 3D Mascot properly replacing the old static image */}
         <motion.div
-           initial={{ opacity: 0, scale: 0.8, x: 100, y: 50 }}
-           animate={{ opacity: 1, scale: 1, x: 0, y: [0, -20, 0] }}
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
            transition={{ 
              opacity: { duration: 1, delay: 0.5 },
-             scale: { duration: 1, delay: 0.5, type: "spring" },
-             y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+             scale: { duration: 1, delay: 0.5, type: "spring" }
            }}
-           className="absolute right-0 bottom-0 lg:bottom-auto font-sans lg:top-1/2 lg:-translate-y-1/2 lg:right-10 pointer-events-none mix-blend-screen z-10 hidden md:block"
+           className="absolute right-0 bottom-0 lg:bottom-auto font-sans lg:top-1/2 lg:-translate-y-1/2 lg:right-0 w-[300px] h-[400px] md:w-[350px] md:h-[500px] lg:w-[450px] lg:h-[750px] z-10 hidden md:block"
         >
-          <img 
-            src="/assets/cyber_mascot.png" 
-            alt="Cyber Mascot" 
-            style={{ 
-              WebkitMaskImage: 'radial-gradient(circle 45% at 50% 50%, black 50%, transparent 90%)',
-              maskImage: 'radial-gradient(circle 45% at 50% 50%, black 50%, transparent 90%)'
-            }}
-            className="w-[300px] md:w-[450px] lg:w-[700px] h-auto max-h-[85vh] object-contain opacity-90" 
-          />
+          <RobotMascot />
         </motion.div>
       </div>
 

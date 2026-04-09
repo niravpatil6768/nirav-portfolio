@@ -58,9 +58,9 @@ export default function About({ data }: { data: any }) {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12 pt-12 border-t border-outline-variant/30">
             {[
-              { label: 'Experience', value: `${data?.yearsOfExperience || '5+'} YRS` },
-              { label: 'Projects', value: '40+' },
-              { label: 'Deployments', value: '100+' }
+              { label: 'Experience', value: `${data?.yearsOfExperience || 0}+ Years` },
+              { label: 'Projects', value: data?.projectsCount || '40+' },
+              { label: 'Deployments', value: data?.deploymentsCount || '100+' }
             ].map((stat, i) => (
               <div key={i} className="flex flex-col gap-2 relative pl-4 border-l border-outline-variant/30 group">
                 <div className="absolute left-[-1px] top-0 h-0 w-[2px] bg-primary group-hover:h-full transition-all duration-300"></div>

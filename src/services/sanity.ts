@@ -13,5 +13,8 @@ export async function getSkills() {
 }
 
 export async function getPersonalInfo() {
-  return sanityClient.fetch(`*[_type == "personalInfo"][0]`);
+  return sanityClient.fetch(`*[_type == "personalInfo"][0]{
+    ...,
+    "resumeUrl": resume.asset->url
+  }`);
 }

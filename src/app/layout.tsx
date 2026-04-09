@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Manrope, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import SmoothScroller from '@/components/layout/SmoothScroller';
+import CustomCursor from '@/components/layout/CustomCursor';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -32,10 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="cursor-none">
       <body
-        className={`${spaceGrotesk.variable} ${manrope.variable} ${plusJakartaSans.variable} font-sans bg-background text-foreground antialiased`}
+        className={`${spaceGrotesk.variable} ${manrope.variable} ${plusJakartaSans.variable} font-sans bg-background text-foreground antialiased cursor-none`}
       >
+        <CustomCursor />
         <SmoothScroller>
           {children}
         </SmoothScroller>

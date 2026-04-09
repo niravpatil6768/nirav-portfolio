@@ -7,7 +7,6 @@ import Experience from '@/components/sections/Experience';
 import Contributions from '@/components/sections/Contributions';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/layout/Footer';
-import AIChatbot from '@/features/chatbot/AIChatbot';
 import { getPersonalInfo, getSkills, getProjects, getExperiences } from '@/services/sanity';
 import HeroSceneWrapper from '@/components/three/HeroSceneWrapper';
 
@@ -39,11 +38,6 @@ export default async function Home() {
         {(!personalInfo?.visibleSections || personalInfo.visibleSections?.contact !== false) && <Contact data={personalInfo} />}
         <Footer />
       </div>
-      <AIChatbot 
-        personalInfo={personalInfo} 
-        skills={skills} 
-        experiences={experiences} 
-      />
     </main>
   );
 }

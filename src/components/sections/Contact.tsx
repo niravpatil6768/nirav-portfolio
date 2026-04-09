@@ -27,6 +27,10 @@ const LeetcodeIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const PhoneIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+);
+
 export default function Contact({ data }: { data: any }) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -76,40 +80,46 @@ export default function Contact({ data }: { data: any }) {
             Ready to deploy a high-performance system or have a mission in mind? Send transmission.
           </p>
 
-          <div className="flex gap-4 mb-10">
+          <div className="flex gap-4 mb-10 flex-wrap">
             {/* Social links */}
             {data?.github && (
-              <a href={data.github} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-white hover:border-white transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={data.github} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-white hover:border-white transition-colors group relative overflow-hidden bg-[#131318]" title="GitHub">
                 <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <GithubIcon className="relative z-10" />
               </a>
             )}
             {data?.linkedin && (
-              <a href={data.linkedin} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#0a66c2] hover:border-[#0a66c2] transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={data.linkedin} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#0a66c2] hover:border-[#0a66c2] transition-colors group relative overflow-hidden bg-[#131318]" title="LinkedIn">
                 <div className="absolute inset-0 bg-[#0a66c2]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <LinkedinIcon className="relative z-10" />
               </a>
             )}
             {data?.twitter && (
-              <a href={data.twitter} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={data.twitter} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-colors group relative overflow-hidden bg-[#131318]" title="Twitter">
                 <div className="absolute inset-0 bg-[#1DA1F2]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <TwitterIcon className="relative z-10" />
               </a>
             )}
             {data?.discord && (
-              <a href={data.discord.startsWith('http') ? data.discord : '#'} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#5865F2] hover:border-[#5865F2] transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={data.discord.startsWith('http') ? data.discord : '#'} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#5865F2] hover:border-[#5865F2] transition-colors group relative overflow-hidden bg-[#131318]" title="Discord">
                 <div className="absolute inset-0 bg-[#5865F2]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <DiscordIcon className="relative z-10" />
               </a>
             )}
             {data?.leetcode && (
-              <a href={data.leetcode} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#FFA116] hover:border-[#FFA116] transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={data.leetcode} target="_blank" className="p-4 border border-outline-variant/30 text-outline hover:text-[#FFA116] hover:border-[#FFA116] transition-colors group relative overflow-hidden bg-[#131318]" title="LeetCode">
                 <div className="absolute inset-0 bg-[#FFA116]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <LeetcodeIcon className="relative z-10" />
               </a>
             )}
+            {data?.mobile && (
+              <a href={`tel:${data.mobile}`} className="p-4 border border-outline-variant/30 text-outline hover:text-[#00fc9a] hover:border-[#00fc9a] transition-colors group relative overflow-hidden bg-[#131318]" title={data.mobile}>
+                <div className="absolute inset-0 bg-[#00fc9a]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
+                <PhoneIcon className="relative z-10" />
+              </a>
+            )}
             {data?.email && (
-              <a href={`mailto:${data.email}`} className="p-4 border border-outline-variant/30 text-outline hover:text-primary hover:border-primary transition-colors group relative overflow-hidden bg-[#131318]">
+              <a href={`mailto:${data.email}`} className="p-4 border border-outline-variant/30 text-outline hover:text-primary hover:border-primary transition-colors group relative overflow-hidden bg-[#131318]" title="Email">
                 <div className="absolute inset-0 bg-primary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform"></div>
                 <Mail className="relative z-10" />
               </a>
